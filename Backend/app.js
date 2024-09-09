@@ -26,7 +26,11 @@ main()
 .then((res)=>{console.log("connection is established to MongoDB")})
 .catch((err) => console.log(err));
 
-app.use(cors());
+app.use(cors({
+  origin:["*"],
+  method:["GET","POST","PUT","DELETE "],
+  credentials: true
+}));
 
 // Routes
 app.use("/todo",taskRoutes);
