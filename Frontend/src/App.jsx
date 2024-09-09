@@ -9,7 +9,7 @@ function App() {
   // Send Data
   const sendData = async()=>{
     try{
-      await axios.post("http://localhost:4500/todo/new",{name:data})
+      await axios.post("https://todo-list-three-omega-29.vercel.app/new",{name:data})
       setData("")
       setTimeout(()=>{
         alert("Your task Add successfully");
@@ -24,7 +24,7 @@ function App() {
   const updateData = async(id,name)=>{
     // console.log(id,name)
     try{
-      await axios.put(`http://localhost:4500/todo/edit/${id}`,{
+      await axios.put(`https://todo-list-three-omega-29.vercel.app/edit/${id}`,{
         name
       })
     }catch(err){
@@ -35,7 +35,7 @@ function App() {
   // delete data
   const deleteData = async(id)=>{
     try{
-      await axios.delete(`http://localhost:4500/todo/${id}`)
+      await axios.delete(`https://todo-list-three-omega-29.vercel.app/todo/${id}`)
     }catch(err){
       alert(err.response.data.message);
     }
@@ -45,7 +45,7 @@ function App() {
   useEffect(()=>{
     try{
       const getData = async ()=>{
-        const response = await axios.get('http://localhost:4500/todo');
+        const response = await axios.get('https://todo-list-three-omega-29.vercel.app/todo');
         setTask(response.data);
       }
       getData()
