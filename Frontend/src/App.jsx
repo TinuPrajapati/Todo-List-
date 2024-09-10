@@ -9,8 +9,9 @@ function App() {
   // Send Data
   const sendData = async()=>{
     try{
-      await axios.post("https://todo-list-560.vercel.app/new",{name:data})
-      setData("")
+      console.log(data);
+      await axios.post("https://todo-list-560.vercel.app/new",{name:data});
+      setData("");
       setTimeout(()=>{
         alert("Your task Add successfully");
       },100)
