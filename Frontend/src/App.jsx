@@ -47,7 +47,7 @@ function App() {
   // delete data
   const deleteData = async (id) => {
     try {
-      await axios.delete(`https://todo-list-560.vercel.app/todo/todo/${id}`, {},{
+      await axios.delete(`https://todo-list-560.vercel.app/todo/${id}`, {},{
         withCredentials: true,
       });
     } catch (err) {
