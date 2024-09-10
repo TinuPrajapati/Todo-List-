@@ -11,7 +11,7 @@ function App() {
     try {
       console.log(data);
       await axios.post(
-        "https://todo-list-560.vercel.app/new",
+        "https://todo-list-560.vercel.app/todo/new",
         { name: data },
         {
           withCredentials: true,
@@ -31,7 +31,7 @@ function App() {
     // console.log(id,name)
     try {
       await axios.put(
-        `https://todo-list-560.vercel.app/edit/${id}`,
+        `https://todo-list-560.vercel.app/todo/edit/${id}`,
         {
           name,
         },
@@ -47,7 +47,7 @@ function App() {
   // delete data
   const deleteData = async (id) => {
     try {
-      await axios.delete(`https://todo-list-560.vercel.app/todo/${id}`, {},{
+      await axios.delete(`https://todo-list-560.vercel.app/todo/todo/${id}`, {},{
         withCredentials: true,
       });
     } catch (err) {
