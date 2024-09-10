@@ -1,59 +1,77 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Task from "./Task";
 import axios from "axios";
 
 function App() {
   const [data, setData] = useState("");
-  const [tasks,setTask] = useState([]);
+  const [tasks, setTask] = useState([]);
 
   // Send Data
-  const sendData = async()=>{
-    try{
+  const sendData = async () => {
+    try {
       console.log(data);
-      await axios.post("https://todo-list-560.vercel.app/new",{name:data});
+      await axios.post(
+        "https://todo-list-560.vercel.app/new",
+        { name: data },
+        {
+          withCredentials: true,
+        }
+      );
       setData("");
-      setTimeout(()=>{
+      setTimeout(() => {
         alert("Your task Add successfully");
-      },100)
-    }
-    catch(err){
+      }, 100);
+    } catch (err) {
       alert(err.response.data.message);
     }
-  }
+  };
 
   // update Data
-  const updateData = async(id,name)=>{
+  const updateData = async (id, name) => {
     // console.log(id,name)
-    try{
-      await axios.put(`https://todo-list-560.vercel.app/edit/${id}`,{
-        name
-      })
-    }catch(err){
+    try {
+      await axios.put(
+        `https://todo-list-560.vercel.app/edit/${id}`,
+        {
+          name,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+    } catch (err) {
       alert(err.response.data.message);
     }
-  }
+  };
 
   // delete data
-  const deleteData = async(id)=>{
-    try{
-      await axios.delete(`https://todo-list-560.vercel.app/todo/${id}`)
-    }catch(err){
+  const deleteData = async (id) => {
+    try {
+      await axios.delete(`https://todo-list-560.vercel.app/todo/${id}`, {},{
+        withCredentials: true,
+      });
+    } catch (err) {
       alert(err.response.data.message);
     }
-  }
+  };
 
   // Get All data
-  useEffect(()=>{
-    try{
-      const getData = async ()=>{
-        const response = await axios.get('https://todo-list-560.vercel.app/todo');
+  useEffect(() => {
+    try {
+      const getData = async () => {
+        const response = await axios.get(
+          "https://todo-list-560.vercel.app/todo",{},
+          {
+            withCredentials: true,
+          }
+        );
         setTask(response.data);
-      }
-      getData()
-    }catch(err){
+      };
+      getData();
+    } catch (err) {
       console.log(err);
     }
-  },[sendData,updateData,deleteData])
+  }, [sendData, updateData, deleteData]);
 
   return (
     <>
@@ -64,20 +82,26 @@ function App() {
             type="text"
             placeholder="Enter Your Task"
             className=" w-[75%] outline-none"
-            onChange={(e)=>{
-              setData(e.target.value)
+            onChange={(e) => {
+              setData(e.target.value);
             }}
             value={data}
           />
-          <button className="w-[25%] bg-sky-500 rounded-xl text-white active:scale-90 py-1"
-          onClick={sendData}
+          <button
+            className="w-[25%] bg-sky-500 rounded-xl text-white active:scale-90 py-1"
+            onClick={sendData}
           >
             Add
           </button>
         </div>
         <div className="w-[80%] h-full py-2 px-8 flex flex-col gap-4 ">
-          {tasks.map((task)=>(
-            <Task key={task._id} task={task} updateData={updateData} deleteData={deleteData}/>
+          {tasks.map((task) => (
+            <Task
+              key={task._id}
+              task={task}
+              updateData={updateData}
+              deleteData={deleteData}
+            />
           ))}
         </div>
       </div>
