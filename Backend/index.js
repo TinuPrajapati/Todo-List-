@@ -4,7 +4,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const port = 4500;
+const port = 8000;
 const Task = require("./models/task.js");
 const errorHandler = require("./handler/errorHandler.js");
 const taskRoutes = require("./Routes/taskRoutes.js");
@@ -39,12 +39,12 @@ app.use("/todo",taskRoutes);
 app.use(errorHandler);
 
 // another request
-app.use("*",(req,res)=>{
-    res.status(404).json({
-        status:"Not found",
-        message:"404, please check url"
-    })
-})
+// app.use("*",(req,res)=>{
+//     res.status(404).json({
+//         status:"Not found",
+//         message:"404, please check url"
+//     })
+// })
 app.get("/",(req,res)=>{
   res.send("hello world")
 })
