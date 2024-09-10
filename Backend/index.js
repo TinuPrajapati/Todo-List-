@@ -27,9 +27,10 @@ main()
 .catch((err) => console.log(err));
 
 app.use(cors({
-  origin:process.env.frontend_url,
+  origin:"https://todo-list-1yj8.vercel.app",
   method:["GET","POST","PUT","DELETE "],
-  credentials: true
+  credentials: true,
+  allowedHeaders: "Content-Type,Authorization",
 }));
 
 // Routes
