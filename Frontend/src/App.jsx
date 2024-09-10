@@ -9,7 +9,6 @@ function App() {
   // Send Data
   const sendData = async () => {
     try {
-      console.log(data);
       await axios.post(
         "https://todo-list-560.vercel.app/todo/new",
         { name: data },
