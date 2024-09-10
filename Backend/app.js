@@ -27,7 +27,7 @@ main()
 .catch((err) => console.log(err));
 
 app.use(cors({
-  origin:["*"],
+  origin:[process.env.frontend_url],
   method:["GET","POST","PUT","DELETE "],
   credentials: true
 }));
@@ -44,6 +44,9 @@ app.use("*",(req,res)=>{
         status:"Not found",
         message:"404, please check url"
     })
+})
+app.get("/",(req,res)=>{
+  res.send("hello world")
 })
 
 // Sever listen
