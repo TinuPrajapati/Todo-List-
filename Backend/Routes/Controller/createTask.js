@@ -2,7 +2,7 @@ const Task = require("../../models/task.js");
 
 const createTask =async (req,res)=>{
     const {name} = req.body;
-
+    console.log("line-->",req.body)
     if(!name) throw "Please enter your task";
 
     const task = new Task({
