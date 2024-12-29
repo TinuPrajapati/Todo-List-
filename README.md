@@ -39,7 +39,7 @@ This project is a full-stack Todo List application built with the MERN stack. Th
 
 #### Clone the Repository
 ```bash
-git clone https://github.com/your-repo/todo-list-mern.git
+git clone https://github.com/TinuPrajapati/Todo-List-Based-On-MERN.git
 cd todo-list-mern
 ```
 
