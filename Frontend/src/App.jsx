@@ -12,6 +12,9 @@ function App() {
   // Send Data
   const sendData = async () => {
     setLoading(true)
+    if(data == ""){
+      toast.error("Please Enter Task Name")
+    }
     try {
       await axios.post(
         `${import.meta.env.VITE_backend}/todo/new`,
