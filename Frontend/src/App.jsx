@@ -91,7 +91,7 @@ function App() {
       {loading && <Loader/>}
       <div id="blur" className="w-full h-full flex flex-col gap-2 items-center  bg-custom3 border-2 border-custom2 rounded-md bg-opacity-10 backdrop-blur-sm py-1 text-sm sm:py-2 sm:gap-4 lg:text-lg">
         <h1 className="text-xl sm:text-3xl">Todo List</h1>
-        <div className="flex bg-custom3 border-2 border-custom2 text-black rounded-lg justify-center gap-2 w-[80%] h-10 p-1  lg:px-3 lg:py-2 lgh-14 lg:w-[50%]">
+        <div className="flex bg-custom3 border-2 border-custom2 text-black rounded-lg justify-center gap-2 w-[80%] h-10 p-1  lg:px-2 lg:h-16 lg:w-[50%]">
           <input
             type="text"
             placeholder="Enter Your Task"
@@ -102,7 +102,7 @@ function App() {
             value={data}
           />
           <button
-            className="w-[25%] bg-sky-500 rounded-md text-white active:scale-90"
+            className="w-[25%] h-full bg-sky-500 rounded-md text-white active:scale-90"
             onClick={sendData}
           >
             Add
