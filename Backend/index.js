@@ -26,6 +26,7 @@ main()
 .then((res)=>{console.log("connection is established to MongoDB")})
 .catch((err) => console.log(err));
 
+
 app.use(cors());
 
 // Routes
