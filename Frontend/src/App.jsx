@@ -17,7 +17,7 @@ function App() {
     }
     try {
       await axios.post(
-        `${import.meta.env.VITE_backend}/todo/new`,
+        `${import.meta.env.VITE_backend}/todo/new_task`,
         { name: data }
       );
       setData("");
@@ -37,7 +37,7 @@ function App() {
     setLoading(true)
     try {
       const response =await axios.put(
-        `${import.meta.env.VITE_backend}/todo/edit`,
+        `${import.meta.env.VITE_backend}/todo/edit_task`,
         {
           id,
           name,
@@ -56,7 +56,7 @@ function App() {
   const deleteData = async (id) => {
     setLoading(true)
     try {
-      const response = await axios.delete(`${import.meta.env.VITE_backend}/todo/${id}`);
+      const response = await axios.delete(`${import.meta.env.VITE_backend}/todo/delete_task/${id}`);
       toast.success(response.data)
       getData();
     } catch (err) {
@@ -69,7 +69,7 @@ function App() {
   const getData = async () => {
     setLoading(true)
     try {
-      const response = await axios.get(`${import.meta.env.VITE_backend}/todo`);
+      const response = await axios.get(`${import.meta.env.VITE_backend}/todo/tasks`);
       setTask(response.data);
     } catch (err) {
       console.log(err);

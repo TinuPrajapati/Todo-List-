@@ -18,7 +18,7 @@ function Task({ task, updateData, deleteData }) {
       setChangeBackgroundColor("bg-red-400");
       setShowUpdateButton(true)
     } else if (statusValue === "Progress") {
-      setChangeBackgroundColor("bg-orange-400")
+      setChangeBackgroundColor("bg-yellow-400")
       setShowUpdateButton(true)
     } else if (statusValue === "Complete") {
       setChangeBackgroundColor("bg-green-400")

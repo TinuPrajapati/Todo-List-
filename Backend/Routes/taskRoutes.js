@@ -5,9 +5,9 @@ const createTask = require("../Controller/createTask.js");
 const updateTask = require("../Controller/updateTask.js");
 const deleteTask = require("../Controller/deleteTask.js");
 
-taskRoutes.get("/",showTask);
-taskRoutes.post("/new",createTask);
-taskRoutes.put("/edit",updateTask);
-taskRoutes.delete("/:id",deleteTask);
+taskRoutes.get("/tasks",showTask);
+taskRoutes.post("/new_task",createTask);
+taskRoutes.put("/edit_task",updateTask);
+taskRoutes.delete("/delete_task/:id",deleteTask);
 
 module.exports = taskRoutes;
