@@ -1,5 +1,4 @@
 const Task = require("../models/task.js");
-const validator = require("validator");
 
 const updateTask = async (req, res) => {
   const { name, id } = req.body;

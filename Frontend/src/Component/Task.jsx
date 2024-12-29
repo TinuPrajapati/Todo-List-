@@ -54,7 +54,7 @@ function Task({ task, updateData, deleteData }) {
       className={`${changeBackgroundColor} w-full h-14 flex justify-between items-center gap-4 rounded-md shadow-xl backdrop-blur-sm bg-opacity-40 p-2`}
     >
       <div className="w-[15%] h-full flex gap-2  ">
-        <select name="" id="" className="w-full text-sm outline-none p-2 bg-transparent bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm" onChange={status}>
+        <select className="w-full text-sm outline-none p-2 bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm" onChange={status}>
           <option value="Pending">Pending</option>
           <option value="Start">Start</option>
           <option value="Progress">In Progress</option>
@@ -75,7 +75,7 @@ function Task({ task, updateData, deleteData }) {
       <div className=" w-[15%] h-full flex justify-evenly items-center gap-4">
         {showUpdateButton && (
           <button
-            className="py-1 px-4 bg-white rounded-sm text-black active:scale-90"
+            className="py-1 px-4 bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm active:scale-90"
             onClick={updateTask}
           >
             {showUpdateButtonText ? "Edit" : "Save"}

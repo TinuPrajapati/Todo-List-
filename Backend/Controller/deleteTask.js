@@ -1,5 +1,4 @@
-const Task = require("../../models/task.js");
-const validator = require("validator");
+const Task = require("../models/task.js");
 
 const deleteTask = async (req, res) => {
   const id = req.params.id;
