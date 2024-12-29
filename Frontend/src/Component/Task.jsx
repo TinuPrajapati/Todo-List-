@@ -1,21 +1,13 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 function Task({ task, updateData, deleteData }) {
-  // check text value
   const [text, setText] = useState(task.name);
-
-  // check input readonly or not
   const [isReadOnly, setIsReadOnly] = useState(true);
-
-  // check changes in update btn text
   const [showUpdateButtonText, setShowUpdateButtonText] = useState(true);
-
-  // check if checkbox is checked when updated btn not display
   const [showUpdateButton, setShowUpdateButton] = useState(true);
-
-  // check if checkbox is checked when task bg color change
   const [changeBackgroundColor, setChangeBackgroundColor] = useState(
-    "bg-gradient-to-r from-cyan-500 to-blue-500 "
+    "bg-sky-600"
   );
 
   // status function
@@ -32,7 +24,7 @@ function Task({ task, updateData, deleteData }) {
       setChangeBackgroundColor("bg-green-400")
       setShowUpdateButton(!showUpdateButton)
     } else {
-      setChangeBackgroundColor("bg-gradient-to-r from-cyan-500 to-blue-500")
+      setChangeBackgroundColor("bg-sky-600")
       setShowUpdateButton(true)
     }
   };
@@ -40,40 +32,29 @@ function Task({ task, updateData, deleteData }) {
   // update function
   const updateTask = () => {
     if (text === "") {
-      alert("Please enter your task");
+      toast.error("Please enter your task");
       setIsReadOnly(false);
       setShowUpdateButtonText(false);
     } else {
       setIsReadOnly(!isReadOnly);
       setShowUpdateButtonText(!showUpdateButtonText);
       if (!isReadOnly) {
-        alert("Your task updated successfully");
+        updateData(task.id, text);
       }
-      updateData(task._id, text);
     }
   };
 
   // Delete Function
   const deleteTask = () => {
     deleteData(task._id);
-    setTimeout(() => {
-      alert("Your task deleted successfully");
-    }, 100);
   };
 
   return (
     <div
-      className={`${changeBackgroundColor} flex justify-between items-center px-3 w-full h-14 rounded-lg shadow-xl`}
+      className={`${changeBackgroundColor} w-full h-14 flex justify-between items-center gap-4 rounded-md shadow-xl backdrop-blur-sm bg-opacity-40 p-2`}
     >
-      {/* <input
-        type="checkbox"
-        onChange={(e) => {
-          setChangeBackgroundColor(!changeBackgroundColor);
-          setShowUpdateButton(!showUpdateButton);
-        }}
-      /> */}
-      <div className="flex border-2 gap-2 bg-gradient-to-r from-cyan-500 to-blue-500">
-        <select name="" id="" className="text-black text-lg outline-none" onChange={status}>
+      <div className="w-[15%] h-full flex gap-2  ">
+        <select name="" id="" className="w-full text-sm outline-none p-2 bg-transparent bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm" onChange={status}>
           <option value="Pending">Pending</option>
           <option value="Start">Start</option>
           <option value="Progress">In Progress</option>
@@ -82,7 +63,7 @@ function Task({ task, updateData, deleteData }) {
       </div>
       <input
         type="text"
-        className="w-[50%] bg-transparent border-none outline-none"
+        className={`w-[70%] h-full px-1 rounded-md ${!isReadOnly?"bg-white":"bg-transparent text-white"} border-none outline-none`}
         value={text}
         onChange={(e) => {
           if (!isReadOnly) {
@@ -94,14 +75,14 @@ function Task({ task, updateData, deleteData }) {
       <div className=" w-[15%] h-full flex justify-evenly items-center gap-4">
         {showUpdateButton && (
           <button
-            className="py-1 px-4 bg-white rounded-lg text-black active:scale-90"
+            className="py-1 px-4 bg-white rounded-sm text-black active:scale-90"
             onClick={updateTask}
           >
             {showUpdateButtonText ? "Edit" : "Save"}
           </button>
         )}
         <button
-          className="text-red-700 bg-white py-1 px-2 rounded-lg active:scale-90"
+          className="text-red-500 py-1 px-2 rounded-sm active:scale-90"
           onClick={deleteTask}
         >
           <i class="ri-close-circle-line"></i>

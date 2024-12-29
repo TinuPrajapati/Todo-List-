@@ -26,12 +26,7 @@ main()
 .then((res)=>{console.log("connection is established to MongoDB")})
 .catch((err) => console.log(err));
 
-app.use(cors({
-  origin:"https://todo-list-1yj8.vercel.app",
-  method:["GET","POST","PUT","DELETE "],
-  credentials: true,
-  allowedHeaders: "Content-Type,Authorization",
-}));
+app.use(cors());
 
 // Routes
 app.use("/todo",taskRoutes);
