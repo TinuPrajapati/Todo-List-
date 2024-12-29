@@ -33,7 +33,7 @@ function App() {
   };
 
   // update Data
-  const updateData = async (id, name) => {
+  const updateData = async (id, name,status) => {
     setLoading(true)
     try {
       const response =await axios.put(
@@ -41,12 +41,14 @@ function App() {
         {
           id,
           name,
+          status,
         }
       );
       toast.success(response.data);
       getData();
     } catch (err) {
       toast.error(err.response.data.message);
+      console.log(err)
     }finally{
       setLoading(false)
     }
@@ -84,7 +86,7 @@ function App() {
   }, []);
 
   return (
-    <div className="w-[100vw] h-[100vh] px-10 py-5 font-Nuntio bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
+    <div className="w-[100vw] h-[100vh] px-10 py-5 font-Nuntio bg-cover bg-center overflow-hidden" style={{ backgroundImage: `url(${background})` }}>
       <div id="blur" className="w-full h-full flex flex-col gap-4 items-center text-lg bg-custom3 border-2 border-custom2 rounded-md bg-opacity-10 backdrop-blur-sm py-2 ">
         <h1 className="text-3xl">Todo List</h1>
         <div className="flex bg-custom3 border-2 border-custom2 text-black w-[50%] h-14 rounded-lg justify-center px-3 py-2 gap-2">

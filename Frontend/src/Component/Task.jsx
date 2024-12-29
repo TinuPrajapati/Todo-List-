@@ -1,31 +1,26 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 
 function Task({ task, updateData, deleteData }) {
   const [text, setText] = useState(task.name);
   const [isReadOnly, setIsReadOnly] = useState(true);
-  const [showUpdateButtonText, setShowUpdateButtonText] = useState(true);
-  const [showUpdateButton, setShowUpdateButton] = useState(true);
-  const [changeBackgroundColor, setChangeBackgroundColor] = useState(
-    "bg-sky-600"
-  );
+  const [ButtonText, setButtonText] = useState(true);
+  const [showButton, setShowButton] = useState(true);
+  const [changeBackgroundColor, setChangeBackgroundColor] = useState("bg-sky-600");
+  const [status,setstatus] = useState(task.status);
 
   // status function
-  const status = (e) => {
-    const statusValue = e.target.value;
-    console.log(statusValue)
-    if (statusValue === "Start") {
+  const handleStatus = () => {
+    if (status === "start") {
       setChangeBackgroundColor("bg-red-400");
-      setShowUpdateButton(true)
-    } else if (statusValue === "Progress") {
+    } else if (status === "progress") {
       setChangeBackgroundColor("bg-yellow-400")
-      setShowUpdateButton(true)
-    } else if (statusValue === "Complete") {
+    } else if (status === "complete") {
       setChangeBackgroundColor("bg-green-400")
-      setShowUpdateButton(!showUpdateButton)
+      setShowButton(!showButton)
     } else {
       setChangeBackgroundColor("bg-sky-600")
-      setShowUpdateButton(true)
+      setShowButton(true)
     }
   };
 
@@ -34,31 +29,40 @@ function Task({ task, updateData, deleteData }) {
     if (text === "") {
       toast.error("Please enter your task");
       setIsReadOnly(false);
-      setShowUpdateButtonText(false);
+      setButtonText(false);
     } else {
       setIsReadOnly(!isReadOnly);
-      setShowUpdateButtonText(!showUpdateButtonText);
+      setButtonText(!ButtonText);
       if (!isReadOnly) {
-        updateData(task.id, text);
+        updateData(task._id, text,status);
       }
     }
   };
+
+  const changeStatus = (e) => {
+    setstatus(e.target.value)
+    updateData(task._id, text,e.target.value);
+  }
 
   // Delete Function
   const deleteTask = () => {
     deleteData(task._id);
   };
 
+  useEffect(() => {
+    handleStatus();
+  }, [status]);
+
   return (
     <div
       className={`${changeBackgroundColor} duration-200 w-full h-14 flex justify-between items-center gap-4 rounded-md shadow-xl backdrop-blur-sm bg-opacity-40 p-2`}
     >
       <div className="w-[15%] h-full flex gap-2  ">
-        <select className="w-full text-sm outline-none p-2 bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm" onChange={status}>
-          <option value="Pending">Pending</option>
-          <option value="Start">Start</option>
-          <option value="Progress">In Progress</option>
-          <option value="Complete">Complete</option>
+        <select className="w-full text-sm outline-none p-2 bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm" onChange={changeStatus}>
+          <option value="pending">Pending</option>
+          <option value="start">Start</option>
+          <option value="progress">In Progress</option>
+          <option value="complete">Complete</option>
         </select>
       </div>
       <input
@@ -73,12 +77,12 @@ function Task({ task, updateData, deleteData }) {
         readOnly={isReadOnly}
       />
       <div className=" w-[15%] h-full flex justify-evenly items-center gap-4">
-        {showUpdateButton && (
+        {showButton && (
           <button
             className="py-1 px-4 bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm active:scale-90"
             onClick={updateTask}
           >
-            {showUpdateButtonText ? "Edit" : "Save"}
+            {ButtonText ? "Edit" : "Save"}
           </button>
         )}
         <button

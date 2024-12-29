@@ -4,15 +4,12 @@ const taskSchema = new mongoose.Schema({
     name:{
         type:String,
         required:[true,"Please enter your task"]
+    },
+    status:{
+        type:String,
+        enum:["pending","completed","progress","start"],
+        default:"pending",
     }
-    // dueDate:{
-    //     type:String,
-    //     required:[true,"Please enter dueDate "]
-    // },
-    // createAt:{
-    //     type:Date,
-    //     default:Date.now()
-    // }
 });
 
 const Task = mongoose.model("Task",taskSchema);
