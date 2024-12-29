@@ -3,6 +3,7 @@ import Task from "./Component/Task";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import background from "./assets/background.jpg"
+import Loader from "./Component/Loader";
 
 function App() {
   const [data, setData] = useState("");
@@ -87,6 +88,7 @@ function App() {
 
   return (
     <div className="w-[100vw] h-[100vh] px-10 py-5 font-Nuntio bg-cover bg-center overflow-hidden" style={{ backgroundImage: `url(${background})` }}>
+      {loading && <Loader/>}
       <div id="blur" className="w-full h-full flex flex-col gap-4 items-center text-lg bg-custom3 border-2 border-custom2 rounded-md bg-opacity-10 backdrop-blur-sm py-2 ">
         <h1 className="text-3xl">Todo List</h1>
         <div className="flex bg-custom3 border-2 border-custom2 text-black w-[50%] h-14 rounded-lg justify-center px-3 py-2 gap-2">
