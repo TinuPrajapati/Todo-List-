@@ -8,10 +8,7 @@ const cors = require("cors");
 const app = express();
 const port = 8000;
 
-// Convert data from url
 app.use(express.urlencoded({ extended: true }));
-
-// Convert data into json format from bson format
 app.use(express.json());
 
 // Connect to data base
@@ -28,12 +25,13 @@ main();
 
 app.use(cors());
 
-// Routes
-app.use("/todo",taskRoutes);
-
 app.get("/",(req,res)=>{
   res.send("hello world")
 })
+
+// Routes
+app.use("/todo",taskRoutes);
+
 
 // Sever listen
 app.listen(port, () => {
