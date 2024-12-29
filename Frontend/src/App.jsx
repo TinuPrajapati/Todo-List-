@@ -87,11 +87,11 @@ function App() {
   }, []);
 
   return (
-    <div className="w-[100vw] h-[100vh] px-10 py-5 font-Nuntio bg-cover bg-center overflow-hidden" style={{ backgroundImage: `url(${background})` }}>
+    <div className="w-[100vw] h-[100vh] font-Nuntio bg-cover bg-center overflow-hidden p-2 sm:px-10 sm:py-5" style={{ backgroundImage: `url(${background})` }}>
       {loading && <Loader/>}
-      <div id="blur" className="w-full h-full flex flex-col gap-4 items-center text-lg bg-custom3 border-2 border-custom2 rounded-md bg-opacity-10 backdrop-blur-sm py-2 ">
-        <h1 className="text-3xl">Todo List</h1>
-        <div className="flex bg-custom3 border-2 border-custom2 text-black w-[50%] h-14 rounded-lg justify-center px-3 py-2 gap-2">
+      <div id="blur" className="w-full h-full flex flex-col gap-2 items-center  bg-custom3 border-2 border-custom2 rounded-md bg-opacity-10 backdrop-blur-sm py-1 text-sm sm:py-2 sm:gap-4 sm:text-lg">
+        <h1 className="text-xl sm:text-3xl">Todo List</h1>
+        <div className="flex bg-custom3 border-2 border-custom2 text-black rounded-lg justify-center gap-2 w-[80%] h-10 p-1 sm:px-3 sm:py-2 sm:h-14 sm:w-[50%]">
           <input
             type="text"
             placeholder="Enter Your Task"
@@ -102,13 +102,13 @@ function App() {
             value={data}
           />
           <button
-            className="w-[25%] bg-sky-500 rounded-md text-white active:scale-90 py-1"
+            className="w-[25%] bg-sky-500 rounded-md text-white active:scale-90"
             onClick={sendData}
           >
             Add
           </button>
         </div>
-        <div className="w-[80%] h-full py-2 px-8 flex flex-col gap-4 ">
+        <div className="h-full flex flex-col gap-2 w-full sm:w-[80%] py-1 px-2 sm:gap-4 sm:py-2 sm:px-8 ">
           {tasks.map((task) => (
             <Task
               key={task._id}

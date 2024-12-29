@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 
 function Task({ task, updateData, deleteData }) {
@@ -7,7 +7,7 @@ function Task({ task, updateData, deleteData }) {
   const [ButtonText, setButtonText] = useState(true);
   const [showButton, setShowButton] = useState(true);
   const [changeBackgroundColor, setChangeBackgroundColor] = useState("bg-sky-600");
-  const [status,setstatus] = useState(task.status);
+  const [status, setstatus] = useState(task.status);
 
   // status function
   const handleStatus = () => {
@@ -34,14 +34,14 @@ function Task({ task, updateData, deleteData }) {
       setIsReadOnly(!isReadOnly);
       setButtonText(!ButtonText);
       if (!isReadOnly) {
-        updateData(task._id, text,status);
+        updateData(task._id, text, status);
       }
     }
   };
 
   const changeStatus = (e) => {
     setstatus(e.target.value)
-    updateData(task._id, text,e.target.value);
+    updateData(task._id, text, e.target.value);
   }
 
   // Delete Function
@@ -55,10 +55,14 @@ function Task({ task, updateData, deleteData }) {
 
   return (
     <div
-      className={`${changeBackgroundColor} duration-200 w-full h-14 flex justify-between items-center gap-4 rounded-md shadow-xl backdrop-blur-sm bg-opacity-40 p-2`}
+      className={`${changeBackgroundColor} duration-200 w-full flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 rounded-md shadow-md backdrop-blur-sm bg-opacity-50 p-3`}
     >
-      <div className="w-[15%] h-full flex gap-2  ">
-        <select className="w-full text-sm outline-none p-2 bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm" onChange={changeStatus}>
+      <div className="w-full sm:w-1/6">
+        <select
+          className="w-full p-2 border rounded-md outline-none bg-black text-white bg-opacity-60 backdrop-blur-md"
+          onChange={changeStatus}
+          value={status}
+        >
           <option value="pending">Pending</option>
           <option value="start">Start</option>
           <option value="progress">In Progress</option>
@@ -67,32 +71,30 @@ function Task({ task, updateData, deleteData }) {
       </div>
       <input
         type="text"
-        className={`w-[70%] h-full px-1 rounded-md ${!isReadOnly?"bg-white":"bg-transparent text-white"} border-none outline-none`}
+        className={`w-full sm:w-3/5 p-2 border rounded-md ${isReadOnly ? "bg-transparent text-white" : "bg-white"
+          }`}
         value={text}
-        onChange={(e) => {
-          if (!isReadOnly) {
-            setText(e.target.value);
-          }
-        }}
         readOnly={isReadOnly}
+        onChange={(e) => setText(e.target.value)}
       />
-      <div className=" w-[15%] h-full flex justify-evenly items-center gap-4">
+      <div className="w-full sm:w-1/5 flex justify-evenly gap-2">
         {showButton && (
           <button
-            className="py-1 px-4 bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm active:scale-90"
+            className="p-2 bg-black text-white bg-opacity-60 backdrop-blur-md rounded-md"
             onClick={updateTask}
           >
             {ButtonText ? "Edit" : "Save"}
           </button>
         )}
         <button
-          className="text-red-500 py-1 px-2 rounded-sm active:scale-90"
+          className="text-red-500 p-2 rounded-md"
           onClick={deleteTask}
         >
-          <i class="ri-close-circle-line"></i>
+          <i className="ri-close-circle-line"></i>
         </button>
       </div>
     </div>
+
   );
 }
 
