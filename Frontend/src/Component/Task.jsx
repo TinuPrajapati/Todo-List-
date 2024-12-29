@@ -51,7 +51,7 @@ function Task({ task, updateData, deleteData }) {
 
   return (
     <div
-      className={`${changeBackgroundColor} w-full h-14 flex justify-between items-center gap-4 rounded-md shadow-xl backdrop-blur-sm bg-opacity-40 p-2`}
+      className={`${changeBackgroundColor} duration-200 w-full h-14 flex justify-between items-center gap-4 rounded-md shadow-xl backdrop-blur-sm bg-opacity-40 p-2`}
     >
       <div className="w-[15%] h-full flex gap-2  ">
         <select className="w-full text-sm outline-none p-2 bg-black text-white rounded-md border-2 border-custom3 bg-opacity-50 backdrop-blur-sm" onChange={status}>
