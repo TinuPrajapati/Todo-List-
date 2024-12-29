@@ -87,11 +87,11 @@ function App() {
   }, []);
 
   return (
-    <div className="w-[100vw] h-[100vh] font-Nuntio bg-cover bg-center overflow-hidden p-2 sm:px-10 sm:py-5" style={{ backgroundImage: `url(${background})` }}>
+    <div className="w-[100vw] h-[100vh] font-Nuntio bg-cover bg-center overflow-hidden p-2 lg:px-10 lg:py-5" style={{ backgroundImage: `url(${background})` }}>
       {loading && <Loader/>}
-      <div id="blur" className="w-full h-full flex flex-col gap-2 items-center  bg-custom3 border-2 border-custom2 rounded-md bg-opacity-10 backdrop-blur-sm py-1 text-sm sm:py-2 sm:gap-4 sm:text-lg">
+      <div id="blur" className="w-full h-full flex flex-col gap-2 items-center  bg-custom3 border-2 border-custom2 rounded-md bg-opacity-10 backdrop-blur-sm py-1 text-sm sm:py-2 sm:gap-4 lg:text-lg">
         <h1 className="text-xl sm:text-3xl">Todo List</h1>
-        <div className="flex bg-custom3 border-2 border-custom2 text-black rounded-lg justify-center gap-2 w-[80%] h-10 p-1 sm:px-3 sm:py-2 sm:h-14 sm:w-[50%]">
+        <div className="flex bg-custom3 border-2 border-custom2 text-black rounded-lg justify-center gap-2 w-[80%] h-10 p-1  lg:px-3 lg:py-2 lgh-14 lg:w-[50%]">
           <input
             type="text"
             placeholder="Enter Your Task"
@@ -108,7 +108,7 @@ function App() {
             Add
           </button>
         </div>
-        <div className="h-full flex flex-col gap-2 w-full sm:w-[80%] py-1 px-2 sm:gap-4 sm:py-2 sm:px-8 ">
+        <div className="h-full flex flex-col gap-2 w-full lg:w-[80%] py-1 px-2 sm:gap-4 sm:py-2 sm:px-8 ">
           {tasks.map((task) => (
             <Task
               key={task._id}

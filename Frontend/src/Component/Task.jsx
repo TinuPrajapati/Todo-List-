@@ -55,9 +55,9 @@ function Task({ task, updateData, deleteData }) {
 
   return (
     <div
-      className={`${changeBackgroundColor} duration-200 w-full flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 rounded-md shadow-md backdrop-blur-sm bg-opacity-50 p-3`}
+      className={`${changeBackgroundColor} duration-200 w-full flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-4 rounded-md shadow-md backdrop-blur-sm bg-opacity-50 p-3`}
     >
-      <div className="w-full sm:w-1/6">
+      <div className="w-full sm:w-[20%] lg:w-[15%]">
         <select
           className="w-full p-2 border rounded-md outline-none bg-black text-white bg-opacity-60 backdrop-blur-md"
           onChange={changeStatus}
