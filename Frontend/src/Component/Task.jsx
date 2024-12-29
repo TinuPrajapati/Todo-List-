@@ -71,7 +71,7 @@ function Task({ task, updateData, deleteData }) {
       </div>
       <input
         type="text"
-        className={`w-full sm:w-3/5 p-2 border rounded-md ${isReadOnly ? "bg-transparent text-white" : "bg-white"
+        className={`w-full sm:w-3/5 p-2 border-none rounded-md outline-none ${isReadOnly ? "bg-transparent text-white" : "bg-white"
           }`}
         value={text}
         readOnly={isReadOnly}
